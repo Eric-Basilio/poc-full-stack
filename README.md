@@ -61,6 +61,9 @@ Manifestos Kubernetes (PVC, Secret, StatefulSet, Service do Postgres) mantidos s
 
 ## 🛠️ Guia de Execução e Comandos Úteis
 
+### 1 Ao iniciar o cluster do zero
+É necessário criar o cluste com o kind rodando o comando kind create cluster. É essencial para aplicar os arquivos YAML que residirão no clustes.
+
 ### 1. Comunicação com o Kubernetes (Túnel)
 Para que a API Java local consiga enxergar o banco de dados que está isolado dentro do cluster Kubernetes (no `ClusterIP`), é necessário abrir um túnel de rede:
 
@@ -103,6 +106,9 @@ A API sobe em `http://localhost:8081`.
 ```bash
 curl -X POST http://localhost:8081/incrementar
 ```
+
+### rodar os testes com o mvnw  corretamente 
+Para rodar os testes unitários e o que já vem com o spring initializr é necessário estar com o port-foward rodando e também passar as variáveis de ambiente do banco de dados com o comando ./mvnw test. Fica DB_NOME=BANCO_TESTE DB_USUARIO=USUARIO DB_SENHA=SENHA ./mvnw test
 
 ## 🔍 Inspecionando o banco diretamente
 

@@ -19,5 +19,6 @@
       ]
     }
   },
-  "postCreateCommand": ".devcontainer/install-kind.sh"
+  "postCreateCommand": ".devcontainer/install-kind.sh",
+  "postStartCommand": "kind get clusters | grep -q '^kind$' || kind create cluster"
 }
