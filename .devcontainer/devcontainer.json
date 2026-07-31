@@ -1,6 +1,6 @@
 {
   "name": "PoC Contador Dev Env",
-  "image": "://microsoft.com",
+  "image": "://microsoft.com/devcontainers/java:17",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
     "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
@@ -16,5 +16,5 @@
       ]
     }
   },
-  "postCreateCommand": "curl -Lo ./kind https://k8s.io && chmod +x ./kind && sudo mv ./kind /usr/local/bin/kind"
+  "postCreateCommand": ".devcontainer/install-kind.sh"
 }
