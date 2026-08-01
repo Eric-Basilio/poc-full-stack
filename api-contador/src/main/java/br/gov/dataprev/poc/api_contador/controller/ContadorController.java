@@ -3,8 +3,12 @@ package br.gov.dataprev.poc.api_contador.controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.gov.dataprev.poc.api_contador.service.ContadorService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
-
+@CrossOrigin(origins = {
+    "https://solid-umbrella-xpjjqgwrg55fpxg7-5500.app.github.dev",
+    "https://solid-umbrella-xpjjqgwrg55fpxg7-8081.app.github.dev"
+} )
 @RestController
 public class ContadorController {
     //INICIANDO A INJEÇÃO DE DEPENDÊNCIAS
