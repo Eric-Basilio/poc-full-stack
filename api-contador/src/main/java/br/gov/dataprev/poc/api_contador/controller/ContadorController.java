@@ -4,10 +4,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.gov.dataprev.poc.api_contador.service.ContadorService;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @CrossOrigin(origins = {
-    "https://solid-umbrella-xpjjqgwrg55fpxg7-5500.app.github.dev",
-    "https://solid-umbrella-xpjjqgwrg55fpxg7-8081.app.github.dev"
+    /*"https://solid-umbrella-xpjjqgwrg55fpxg7-5500.app.github.dev",
+    "https://solid-umbrella-xpjjqgwrg55fpxg7-8081.app.github.dev",*/
+    "http://localhost:5500"
 } )
 @RestController
 public class ContadorController {
@@ -26,7 +28,13 @@ public class ContadorController {
     PROVAVELMENTE VAI TER UM EVENTLISTENER NO FRONT END
     ESPERANDO ONCLICK QUE VAI ATIVAR ESSA ROTA */ 
     @PostMapping("/incrementar")
-    public Integer incrementar(){
-        return contadorService.incrementar();
-    }    
+        public Integer incrementar(){
+            return contadorService.incrementar();
+    }
+    
+    @GetMapping("/contador")
+        public Integer getContador(){
+            return contadorService.getContador();
+        }
+    
 }

@@ -56,4 +56,19 @@ public class ContadorService {
 
  }
 
+ public Integer getContador() {
+   
+   Optional<Contador> resultadoBusca = contadorRepository.findById(1L);
+   Contador contador;
+
+   if (resultadoBusca.isPresent()){
+      contador = resultadoBusca.get();
+   } else {
+      contador = new Contador();
+      contador.setValorAtual(0);
+   }
+
+      return contador.getValorAtual();
+ }
+
 }

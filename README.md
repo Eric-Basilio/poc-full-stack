@@ -54,8 +54,8 @@ Manifestos Kubernetes (PVC, Secret, StatefulSet, Service do Postgres) mantidos s
 - [x] Camada Service (`ContadorService`, lógica de incremento)
 - [x] Camada Controller (`ContadorController`, rota `POST /incrementar`)
 - [x] Fluxo de incremento validado de ponta a ponta via `curl`/Postman, com persistência confirmada no banco
-- [ ] Frontend estático (HTML/CSS/JS) consumindo a API
-- [ ] Testes automatizados (JUnit/Mockito) do `ContadorService`
+- [x] Frontend estático (HTML/CSS/JS) consumindo a API
+- [x] Testes automatizados (JUnit/Mockito) do `ContadorService`
 - [ ] Empacotamento da API em container Docker e deploy dentro do próprio cluster
 - [ ] Exposição pública via Cloudflare Tunnel
 
@@ -89,7 +89,7 @@ echo -n "SUA_PALAVRA_AQUI" | base64 -d
 Seguindo as boas práticas de segurança e os princípios do **12-Factor App**, as credenciais do banco não ficam no código (hardcoded). Elas são injetadas como variáveis de ambiente na inicialização do servidor web (Tomcat):
 
 ```bash
-DB_NOME=SEU_BANCO DB_USUARIO=SEU_USUARIO DB_SENHA=SUA_SENHA ./mvnw spring-boot:run
+DB_NOME=BANCO_TESTE DB_USUARIO=USUARIO DB_SENHA=SENHA ./mvnw spring-boot:run
 ```
 *(Substitua os valores fictícios pelas credenciais reais decodificadas configuradas no seu Secret do Kubernetes).*
 
