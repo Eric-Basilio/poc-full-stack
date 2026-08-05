@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @CrossOrigin(origins = {
-    /*"https://solid-umbrella-xpjjqgwrg55fpxg7-5500.app.github.dev",
-    "https://solid-umbrella-xpjjqgwrg55fpxg7-8081.app.github.dev",*/
+    "https://solid-umbrella-xpjjqgwrg55fpxg7-5500.app.github.dev",
     "http://localhost:5500"
 } )
 @RestController

@@ -125,6 +125,36 @@ Dentro do `psql`:
 SELECT * FROM contador;
 ```
 
+### OUTROS COMANDOS IMPORTANTES (FORMATAR ESSE TEXTO MELHOR DEPOIS)
+# Emcapsulamento da aplicação
+ - No estado atual o banco de dados está rodando em um pod
+ - fiz o build da api pulando os testes utilizando o comando 
+ ```bash
+ ./mvnw clean package -DskipTests
+
+ ```
+ - Criei um Dockerfile que "puxa" uma imagem linux com o java 17 e copia para dentro do container o .jar da API criado pelo mvnw
+ - a partir do docker file criei uma imagem/build com o comando: 
+
+ ``` bash
+ docker build -t api-contador .
+ ```
+ - Criei um deployment que orienta o cluster a criar um pod da imagem docker com a API
+ - para o KIND "ver" a imagem importei ela com o comando 
+ ``` bash
+ kind load docker-image api-contador:latest
+ ```
+ - Agora com a imgem api-contador:latest puxada para dentro do kind é possivel aplicar o yaml que criar o node da api
+
+ ``` bash
+ cd /workspaces/poc-full-stack && kubectl apply -f ./k8s/api-deployment.yaml
+ kind load docker-image api-contador:latest
+ ```
+- Agora, para expor a api para o font end (que está fora do cluster) criei um service de port-foward -> api-service.yaml. Para executalo deve-se rodar o comando 
+``` bash
+kubectl port-forward svc/api-contador-service 8081:8081
+```
+
 ## 📚 Contexto de aprendizado
 
 Este projeto foi construído de forma incremental e propositalmente manual (sem código gerado pronto), como exercício prático de estudo para os tópicos de Desenvolvimento de Software, Banco de Dados, Kubernetes/Docker e Arquitetura de Software cobrados em processos seletivos de TI.

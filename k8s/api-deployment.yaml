@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: api-contador
-          image: poc-contador-api:latest
+          image: api-contador:latest
           imagePullPolicy: Never
           env:
             - name: DB_NOME
@@ -40,3 +40,10 @@ spec:
           ports:
             - containerPort: 8081
           
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
