@@ -6,26 +6,29 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 @Entity
-public class Contador {
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer valorAtual;
+    private String login;
+    private String senha;
 
-    // GETTERS E SETTERS DO ID
     public Long getId(){
         return this.id;
-    }
-    public void setId(Long novoId){
-        id = novoId;
     } 
 
-    // GETTERS E SETTERS DO VALOR ATUAL
-    public Integer getValorAtual(){
-        return this.valorAtual;
+    public String getLogin(){
+        return this.login;
     }
-    public void setValorAtual(Integer novoValor){
-        valorAtual = novoValor;
+    public void setLogin(String novoLogin){
+        login = novoLogin;
     }
 
+    public String getSenha(){
+        return this.senha;
+    }
+    public void setSenha(String novaSenha){
+        senha = novaSenha;
+    }
+    
 }
