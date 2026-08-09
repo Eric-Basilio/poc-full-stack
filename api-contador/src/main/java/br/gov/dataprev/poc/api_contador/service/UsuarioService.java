@@ -3,9 +3,11 @@ package br.gov.dataprev.poc.api_contador.service;
 import br.gov.dataprev.poc.api_contador.repository.UsuarioRepository;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import br.gov.dataprev.poc.api_contador.model.Usuario;
 
+@Service
 public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
