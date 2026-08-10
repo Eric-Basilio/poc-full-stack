@@ -6,6 +6,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import javax.crypto.SecretKey;
 import java.util.Date;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.Claims;
 
 @Service
 public class TokenService {
@@ -13,7 +15,7 @@ public class TokenService {
     private String jwtSecretBase64;
 
     public String gerarToken(String login){
-        SecretKey chave = Keys.hmacShaKeyFor(jwtSecretBase64.getBytes());
+        SecretKey chave = Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecretBase64));
 
         Date agora = new Date();
         Date expiracao = new Date(agora.getTime() + 3600000);
@@ -24,5 +26,16 @@ public class TokenService {
                 .expiration(expiracao)
                 .signWith(chave)
                 .compact();
+    }
+
+    public String validarETerLogin(String token){
+        SecretKey chave = Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecretBase64));
+
+        Claims claims = Jwts.parser()
+                .verifyWith(chave)
+                .build().parseSignedClaims(token)
+                .getPayload();
+
+        return claims.getSubject();
     }
 }
